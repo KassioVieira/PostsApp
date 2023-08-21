@@ -16,32 +16,10 @@ Além disso, vamos introduzir o conceito de navegação em telas e ter mais do q
 
 Por isso, para esse desafio, vamos fazer a integração com a API JSON Placeholder.
 
-<table>
-  <tr>
-   <td>API<td>
-   <td>
-    [https://jsonplaceholder.typicode.com/](https://jsonplaceholder.typicode.com/)
-   </td>
-  </tr>
-</table>
 
-<table>
-  <tr>
-    <td>
-      Endpoint
-    </td>
-    <td>
-      [https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)
-    </td>
-  </tr>
-  <tr>
-    <td>
-    </td>
-    <td>
-      [https://jsonplaceholder.typicode.com/comments?postId=IDPOST](https://jsonplaceholder.typicode.com/comments?postId=IDPOST)
-    </td>
-  </tr>
-</table>
+Api: [https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com)<br/>
+Posts: [https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)<br/>
+Comments: [https://jsonplaceholder.typicode.com/comments?postId=IDPOST](https://jsonplaceholder.typicode.com/comments?postId=IDPOST)<br/>
 
 A ideia é que, enquanto a API não tiver retornado a resposta, o app deve exibir a lista de posts e de comentários como um _Skeleton Content Loader_.
 
