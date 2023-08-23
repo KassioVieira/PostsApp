@@ -4,6 +4,9 @@
 
 <table>
   <tr>
+     <td>
+      <img src="docs/skeleton.png" width="200"/>
+    </td>
     <td>
       <img src="docs/1.png" width="200"/>
     </td>
@@ -15,7 +18,6 @@ Sabemos que a comunicação com a API pode demorar um tempo, e por isso o usuár
 Além disso, vamos introduzir o conceito de navegação em telas e ter mais do que uma `Activity` no nosso app.
 
 Por isso, para esse desafio, vamos fazer a integração com a API JSON Placeholder.
-
 
 Api: [https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com)<br/>
 Posts: [https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)<br/>
