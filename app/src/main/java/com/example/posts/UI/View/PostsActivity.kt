@@ -3,9 +3,9 @@ package com.example.posts.UI.View
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.posts.Extensions.obtainPostsViewModel
 import com.example.posts.R
 import com.example.posts.UI.Adapter.PostsAdapter
 import com.example.posts.UI.ViewModel.PostsViewModel
@@ -28,7 +28,7 @@ class PostsActivity : AppCompatActivity() {
     }
 
     private fun setupViewReferences() {
-        postsViewModel = ViewModelProvider(this).get(PostsViewModel::class.java)
+        postsViewModel = obtainPostsViewModel()
         recyclerView = findViewById(R.id.recyclerView)
     }
 
