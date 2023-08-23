@@ -37,6 +37,7 @@ android:layout_margin="10dp"
             android:id="@+id/body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text=""
             />
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -3,7 +3,7 @@ package com.example.posts.UI.ViewHolders
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.posts.Model.Post
+import com.example.posts.Data.Model.Post
 import com.example.posts.R
 
 class PostsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

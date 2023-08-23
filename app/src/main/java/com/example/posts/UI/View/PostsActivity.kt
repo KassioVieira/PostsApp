@@ -1,39 +1,46 @@
 package com.example.posts.UI.View
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.posts.Model.Post
 import com.example.posts.R
 import com.example.posts.UI.Adapter.PostsAdapter
+import com.example.posts.UI.ViewModel.PostsViewModel
 
 class PostsActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var postsViewModel: PostsViewModel
+    private lateinit var adapter: PostsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerView = findViewById(R.id.recyclerView)
+        setupViewReferences()
+        setupRecyclerView()
+        listenPostsChanges()
 
-        listSettings()
+        postsViewModel.fetchAllPosts()
     }
 
-    private fun listSettings() {
-        val posts =  generateMockPosts()
+    private fun setupViewReferences() {
+        postsViewModel = ViewModelProvider(this).get(PostsViewModel::class.java)
+        recyclerView = findViewById(R.id.recyclerView)
+    }
 
-        val adapter = PostsAdapter(posts)
+    private fun setupRecyclerView() {
+        adapter = PostsAdapter(emptyList())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun generateMockPosts(): List<Post> {
-        val mockPosts = mutableListOf<Post>()
-        for (i in 1..10) {
-            mockPosts.add(Post(i+1, i,getString(R.string.title_post), getString(R.string.body_post)))
-        }
-        return mockPosts
+    private fun listenPostsChanges() {
+        postsViewModel.postLiveData.observe(this, Observer { posts ->
+            adapter.updatePostList(posts)
+        })
     }
 }
