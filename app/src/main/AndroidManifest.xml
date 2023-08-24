@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Posts"
         tools:targetApi="31">
         <activity
-            android:name=".UI.View.PostDetailActivity"
+            android:name=".UI.View.CommentsActivity"
             android:exported="false" />
         <activity
             android:name=".UI.View.PostsActivity"

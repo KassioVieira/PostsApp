@@ -7,7 +7,7 @@ import com.example.posts.Data.Model.Post
 import com.example.posts.R
 import com.example.posts.UI.ViewHolders.PostsViewHolder
 
-class PostsAdapter(private  var posts: List<Post>): RecyclerView.Adapter<PostsViewHolder>() {
+class PostsAdapter(private  var posts: List<Post>, private val clickListener: OnPostItemClickListener): RecyclerView.Adapter<PostsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.post_item, parent, false)
@@ -17,6 +17,10 @@ class PostsAdapter(private  var posts: List<Post>): RecyclerView.Adapter<PostsVi
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
         val post = posts[position];
         holder.bind(post)
+
+        holder.itemView.setOnClickListener {
+            clickListener.onPostItemClick(post)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -27,4 +31,8 @@ class PostsAdapter(private  var posts: List<Post>): RecyclerView.Adapter<PostsVi
         posts = updatedPostsList
         notifyDataSetChanged()
     }
+}
+
+interface OnPostItemClickListener {
+    fun onPostItemClick(post: Post)
 }

@@ -1,5 +1,6 @@
 package com.example.posts.UI.View
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -8,13 +9,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.posts.Data.Model.Post
 import com.example.posts.Extensions.obtainPostsViewModel
 import com.example.posts.R
+import com.example.posts.UI.Adapter.OnPostItemClickListener
 import com.example.posts.UI.Adapter.PostsAdapter
 import com.example.posts.UI.ViewModel.PostsViewModel
 import com.facebook.shimmer.ShimmerFrameLayout
 
-class PostsActivity : AppCompatActivity() {
+class PostsActivity : AppCompatActivity(), OnPostItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var postsViewModel: PostsViewModel
@@ -44,7 +47,7 @@ class PostsActivity : AppCompatActivity() {
         shimmerLayout = findViewById(R.id.skeleton)
         shimmerLayout.startShimmer()
 
-        adapter = PostsAdapter(emptyList())
+        adapter = PostsAdapter(emptyList(), this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
@@ -58,5 +61,11 @@ class PostsActivity : AppCompatActivity() {
                 recyclerView.visibility = View.VISIBLE
             }, 1000)
         })
+    }
+
+    override fun onPostItemClick(post: Post) {
+        val intent = Intent(this@PostsActivity, CommentsActivity::class.java)
+        intent.putExtra("post", post)
+        startActivity(intent)
     }
 }
